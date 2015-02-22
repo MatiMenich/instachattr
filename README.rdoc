@@ -1,0 +1,5 @@
+= Sock Chat
+
+Uses tubesock and redis to do pub/sub chatting purely with threads on puma.
+
+Just run `rails server` and open multiple browser windows, then hang out with yourself.
