@@ -2,7 +2,9 @@ class ChatController < ApplicationController
   include Tubesock::Hijack
 
   def chat
+    
     hijack do |tubesock|
+      redis = Redis.new(:url => ENV['REDISTOGO_URL'] || "redis://localhost:6379/")
       # Listen on its own thread
       redis_thread = Thread.new do
         # Needs its own redis connection to pub
@@ -17,7 +19,7 @@ class ChatController < ApplicationController
       tubesock.onmessage do |m|
         # pub the message when we get one
         # note: this echoes through the sub above
-        Redis.new(:url => ENV['REDISTOGO_URL'] || "redis://localhost:6379/").publish m.split(",")[0], m.split(",")[1]
+        redis.publish m.split(",")[0], m.split(",")[1]
       end
       
       tubesock.onclose do
