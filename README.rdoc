@@ -1,4 +1,4 @@
-= Sock Chat
+= Instachattr
 
 Uses tubesock and redis to do pub/sub chatting purely with threads on puma.
 
