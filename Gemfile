@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'pg'
 
+gem 'rails_12factor'
+
 gem 'redis'
 gem 'puma'
 gem 'tubesock'
